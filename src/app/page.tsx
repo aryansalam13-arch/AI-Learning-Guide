@@ -1,101 +1,137 @@
-import Image from "next/image";
+import Link from "next/link";
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
 
-export default function Home() {
+const features = [
+  {
+    icon: "🔄",
+    title: "One Input, Many Outputs",
+    description:
+      "Paste a blog post, video transcript, or any content. Get it instantly transformed into multiple platform-ready formats.",
+  },
+  {
+    icon: "🎯",
+    title: "Platform-Optimized",
+    description:
+      "Each output is tailored for its platform — tweet-length threads, professional LinkedIn posts, engaging email newsletters.",
+  },
+  {
+    icon: "⚡",
+    title: "Seconds, Not Hours",
+    description:
+      "What used to take hours of rewriting now takes seconds. Generate all your social content in one click.",
+  },
+];
+
+const steps = [
+  { number: "1", title: "Paste Your Content", description: "Drop in any blog post, article, notes, or transcript." },
+  { number: "2", title: "Pick Your Platforms", description: "Choose which formats you need — Twitter, LinkedIn, email, and more." },
+  { number: "3", title: "Copy & Post", description: "Get polished, platform-ready content. Just copy and publish." },
+];
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Hero */}
+      <section className="mx-auto max-w-5xl px-4 pt-20 pb-16 text-center">
+        <div className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-sm font-medium text-brand-700 mb-6">
+          Save hours every week
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          Turn one piece of content
+          <br />
+          <span className="text-brand-600">into many</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+          Paste your blog post, video transcript, or any content. Instantly get
+          platform-ready versions for Twitter, LinkedIn, email newsletters, and
+          more.
+        </p>
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <Link href="/create">
+            <Button size="lg">Start Repurposing</Button>
+          </Link>
+          <Link href="#how-it-works">
+            <Button variant="secondary" size="lg">
+              How It Works
+            </Button>
+          </Link>
+        </div>
+        <p className="mt-4 text-sm text-gray-500">3 free repurposes per month. No credit card required.</p>
+      </section>
+
+      {/* Features */}
+      <section className="mx-auto max-w-5xl px-4 py-16">
+        <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+          Why creators love Repurpose
+        </h2>
+        <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          {features.map((feature) => (
+            <Card key={feature.title} className="text-center">
+              <div className="text-3xl mb-4">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
+              <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+            How it works
+          </h2>
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            {steps.map((step) => (
+              <div key={step.number} className="text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-white text-lg font-bold">
+                  {step.number}
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-gray-900">{step.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{step.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/create">
+              <Button size="lg">Try It Free</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="mx-auto max-w-5xl px-4 py-16 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Simple pricing</h2>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 max-w-2xl mx-auto">
+          <Card className="text-left">
+            <h3 className="text-lg font-semibold text-gray-900">Free</h3>
+            <p className="mt-1 text-3xl font-bold text-gray-900">$0</p>
+            <p className="text-sm text-gray-500">per month</p>
+            <ul className="mt-6 space-y-3 text-sm text-gray-600">
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> 3 repurposes per month</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> All output formats</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> Copy to clipboard</li>
+            </ul>
+          </Card>
+          <Card className="text-left border-brand-600 border-2 relative">
+            <div className="absolute -top-3 left-4 bg-brand-600 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+              Popular
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900">Pro</h3>
+            <p className="mt-1 text-3xl font-bold text-gray-900">$12</p>
+            <p className="text-sm text-gray-500">per month</p>
+            <ul className="mt-6 space-y-3 text-sm text-gray-600">
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> Unlimited repurposes</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> All output formats</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> Tone customization</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> History &amp; saved outputs</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">&#10003;</span> Priority support</li>
+            </ul>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
